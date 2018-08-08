@@ -1,0 +1,52 @@
+- name: 'AND/OR'
+  input: '1 AND 2 OR 3'
+  expected:
+    type: operator
+    operator: OR
+    left:
+      type: operator
+      operator: AND
+      left:
+        type: value
+        value: '1'
+      right:
+        type: value
+        value: '2'
+    right:
+      type: value
+      value: '3'
+- name: '()'
+  input: '1 AND (2 OR 3)'
+  expected:
+    type: operator
+    operator: AND
+    left:
+      type: value
+      value: '1'
+    right:
+      type: operator
+      operator: OR
+      left:
+        type: value
+        value: '2'
+      right:
+        type: value
+        value: '3'
+- name: '&&/||'
+  input: '1 && 2 || 3'
+  expected:
+    type: operator
+    operator: OR
+    left:
+      type: operator
+      operator: AND
+      left:
+        type: value
+        value: '1'
+      right:
+        type: value
+        value: '2'
+    right:
+      type: value
+      value: '3'
+
